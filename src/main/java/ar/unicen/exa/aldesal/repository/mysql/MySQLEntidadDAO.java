@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public abstract class MySQLEntidadDAO {
-    private final Connection connection;
+    protected final Connection connection;
 
     public MySQLEntidadDAO(Connection connection) {
         this.connection = connection;
@@ -19,6 +19,8 @@ public abstract class MySQLEntidadDAO {
         String query = getInitQuery();
         connection.prepareStatement(query).execute();
     }
+
+
 
     protected abstract String getInitQuery();
 }
