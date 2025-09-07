@@ -2,12 +2,12 @@ package ar.unicen.exa.aldesal.entity;
 
 public class FacturaProducto {
     private int idFactura;
-    private int idCliente;
+    private int idProducto;
     private int cantidad;
 
-    public FacturaProducto(int idFactura, int idCliente, int cantidad) {
+    public FacturaProducto(int idFactura, int idProducto, int cantidad) {
         this.idFactura = idFactura;
-        this.idCliente = idCliente;
+        this.idProducto = idProducto;
         this.cantidad = cantidad;
     }
 
@@ -15,9 +15,7 @@ public class FacturaProducto {
         return idFactura;
     }
 
-    public int getIdCliente() {
-        return idCliente;
-    }
+    public int getIdProducto() {return idProducto;}
 
     public int getCantidad() {
         return cantidad;
@@ -27,8 +25,8 @@ public class FacturaProducto {
         this.idFactura = idFactura;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setIdCliente(int idProducto) {
+        this.idProducto = idProducto;
     }
 
     public void setCantidad(int cantidad) {
