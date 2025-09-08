@@ -34,7 +34,7 @@ public class MySQLDAOCliente extends MySQLEntidadDAO implements ClienteDAO {
 
         String query =
                 """
-                INSERT INTO Cliente (idCliente, nombre, email) VALUES
+                INSERT INTO Cliente (idCliente, nombre, email) VALUES 
                 """;
 
         ArrayList<String> values = new ArrayList<>(), placeholders = new ArrayList<>();
