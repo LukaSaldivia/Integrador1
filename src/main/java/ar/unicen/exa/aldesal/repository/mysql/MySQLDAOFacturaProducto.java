@@ -37,7 +37,7 @@ public class MySQLDAOFacturaProducto extends MySQLEntidadDAO implements FacturaP
         // Inserta varias filas en la tabla Factura_Producto en una sola query.
         // Construye un placeholders "(?,?,?)" por cada FacturaProducto.
         String query = """
-                INSERT INTO Factura_Producto (idFactura, idProducto, cantidad) VALUES
+                INSERT INTO Factura_Producto (idFactura, idProducto, cantidad) VALUES 
                 """;
         ArrayList<String> placeholders = new ArrayList<>();
         ArrayList<String> values = new ArrayList<>();

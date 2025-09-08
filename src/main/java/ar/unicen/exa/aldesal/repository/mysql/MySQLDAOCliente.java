@@ -5,6 +5,7 @@ import ar.unicen.exa.aldesal.entity.Cliente;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +70,34 @@ public class MySQLDAOCliente extends MySQLEntidadDAO implements ClienteDAO {
                 """;
 
         connection.prepareStatement(query).execute();
+
+    }
+
+    @Override
+    public List<Cliente> getClientesMasFacturado() throws SQLException {
+
+        ArrayList<Cliente> res = new  ArrayList<>();
+
+        String query =
+                """
+                SELECT c.idCliente, c.nombre, c.email,
+                SUM(fp.cantidad * p.valor) AS total_facturado
+                FROM Cliente c
+                JOIN Factura f ON c.idCliente = f.idCliente
+                JOIN Factura_Producto fp ON f.idFactura = fp.idFactura
+                JOIN Producto p ON fp.idProducto = p.idProducto
+                GROUP BY c.idCliente, c.nombre, c.email
+                ORDER BY total_facturado DESC
+                """;
+
+        ResultSet rs = connection.prepareStatement(query).executeQuery();
+        while (rs.next()){
+            Cliente cl = new Cliente(rs.getInt("idCliente"), rs.getString("nombre"), rs.getString("email"));
+            res.add(cl);
+        }
+
+        return res;
+
 
     }
 }

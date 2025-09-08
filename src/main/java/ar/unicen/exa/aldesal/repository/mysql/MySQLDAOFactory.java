@@ -16,16 +16,16 @@ public class MySQLDAOFactory extends DAOFactory {
 
     @Override
     public ProductoDAO getProductoDAO() {
-        return null;
+        return new  MySQLDAOProducto(MySQLConnectionManager.getInstance().getConnection());
     }
 
     @Override
     public FacturaDAO getFacturaDAO() {
-        return null;
+        return new MySQLDAOFactura(MySQLConnectionManager.getInstance().getConnection());
     }
 
     @Override
     public FacturaProductoDAO getFacturaProductoDAO() {
-        return null;
+        return  new MySQLDAOFacturaProducto(MySQLConnectionManager.getInstance().getConnection());
     }
 }

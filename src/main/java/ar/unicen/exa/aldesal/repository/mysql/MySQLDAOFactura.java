@@ -18,7 +18,7 @@ public class MySQLDAOFactura extends MySQLEntidadDAO implements FacturaDAO {
     public void insertarVarios(List<Factura> EntidadDAO) {
         String sql =
             """
-            INSERT INTO factura (idFactura, idCliente) VALUES
+            INSERT INTO factura (idFactura, idCliente) VALUES 
             """;
 
         ArrayList<String> values = new ArrayList<>(), placeholder = new ArrayList<>();
