@@ -62,7 +62,7 @@ public class MySQLDAOFactura extends MySQLEntidadDAO implements FacturaDAO {
                 """
                 CREATE TABLE IF NOT EXISTS Factura (
                 idFactura INTEGER PRIMARY KEY,
-                idCliente INTEGER NOT NULL
+                FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente)
                 )
                 """;
     }
