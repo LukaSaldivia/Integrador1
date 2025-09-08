@@ -66,7 +66,7 @@ public class MySQLDAOCliente extends MySQLEntidadDAO implements ClienteDAO {
 
         String query =
                 """
-                DELETE * FROM Cliente
+                DELETE FROM Cliente
                 """;
 
         connection.prepareStatement(query).execute();
@@ -76,7 +76,7 @@ public class MySQLDAOCliente extends MySQLEntidadDAO implements ClienteDAO {
     @Override
     public List<Cliente> getClientesMasFacturado() throws SQLException {
 
-        ArrayList<Cliente> res = new  ArrayList<>();
+        ArrayList<Cliente> res = new ArrayList<>();
 
         String query =
                 """

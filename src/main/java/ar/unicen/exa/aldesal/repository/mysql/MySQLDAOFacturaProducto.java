@@ -21,7 +21,7 @@ public class MySQLDAOFacturaProducto extends MySQLEntidadDAO implements FacturaP
         // correspondientes a Factura y Producto.
         return
                 """
-                CREATE TABLE Factura_Producto (
+                CREATE TABLE IF NOT EXISTS Factura_Producto (
                     idFactura INT NOT NULL,
                     idProducto INT NOT NULL,
                     cantidad INT NOT NULL,
