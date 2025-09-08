@@ -78,6 +78,9 @@ public class MySQLDAOFacturaProducto extends MySQLEntidadDAO implements FacturaP
 
     @Override
     public void agregarEnMemoria(CSVRecord record, List<FacturaProducto> arr) {
-
+        Integer idFactura = Integer.valueOf(record.get("idFactura"));
+        Integer idProducto = Integer.valueOf(record.get("idProducto"));
+        Integer cantidad = Integer.valueOf(record.get("cantidad"));
+        arr.add(new FacturaProducto(idFactura, idProducto, cantidad));
     }
 }
