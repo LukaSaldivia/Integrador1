@@ -65,7 +65,7 @@ public class MySQLDAOProducto extends MySQLEntidadDAO implements ProductoDAO {
                 """;
     }
 
-    public Producto getMasRecaudado(int idProducto) throws SQLException {
+    public Producto getMasRecaudado() throws SQLException {
         String query =
                 """
                 SELECT p.idProducto, p.nombre, SUM(fp.cantidad * p.valor) AS recaudacion

@@ -98,6 +98,5 @@ public class MySQLDAOCliente extends MySQLEntidadDAO implements ClienteDAO {
 
         return res;
 
-
     }
 }
