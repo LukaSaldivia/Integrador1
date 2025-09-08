@@ -36,10 +36,10 @@ public class MySQLDAOProducto extends MySQLEntidadDAO implements ProductoDAO {
         }
         query += String.join(",",placeholders);
         PreparedStatement ps = connection.prepareStatement(query);
-        for (int i = 0; i < values.size(); i++) {
+        for (int i = 0; i < values.size(); i+=3) {
             ps.setInt(i + 1, Integer.parseInt(values.get(i)));
-            ps.setString(i + 2, values.get(i));
-            ps.setInt(i + 3, Integer.parseInt(values.get(i)));
+            ps.setString(i + 2, values.get(i+1));
+            ps.setInt(i + 3, Integer.parseInt(values.get(i+2)));
         }
         ps.executeUpdate();
         ps.close();
@@ -57,7 +57,10 @@ public class MySQLDAOProducto extends MySQLEntidadDAO implements ProductoDAO {
 
     @Override
     public void agregarEnMemoria(CSVRecord record, List<Producto> arr) {
-
+        Integer  idProducto = Integer.valueOf(record.get("idProducto"));
+        String nombre = record.get("nombre");
+        Float valor = Float.valueOf(record.get("valor"));
+        arr.add(new Producto(idProducto, nombre, valor));
     }
 
     @Override
