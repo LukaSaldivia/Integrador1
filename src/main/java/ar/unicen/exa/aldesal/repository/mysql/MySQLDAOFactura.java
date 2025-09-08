@@ -15,37 +15,34 @@ public class MySQLDAOFactura extends MySQLEntidadDAO implements FacturaDAO {
     }
 
     @Override
-    public void insertarVarios(List<Factura> EntidadDAO) {
+    public void insertarVarios(List<Factura> EntidadDAO) throws SQLException {
         String sql =
-            """
-            INSERT INTO factura (idFactura, idCliente) VALUES 
-            """;
+                """
+                INSERT INTO Factura (idFactura, idCliente) VALUES
+                """;
 
         ArrayList<String> values = new ArrayList<>(), placeholder = new ArrayList<>();
 
-        for (Factura Entidad : EntidadDAO) {
+        for (Factura entidad : EntidadDAO) {
             placeholder.add("(?,?)");
-            values.add(String.valueOf(Entidad.getIdFactura()));
-            values.add(String.valueOf(Entidad.getIdCliente()));
+            values.add(String.valueOf(entidad.getIdFactura()));
+            values.add(String.valueOf(entidad.getIdCliente()));
         }
 
         sql += String.join(",", placeholder);
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            for (Factura Entidad : EntidadDAO) {
-                ps.setInt(1, Entidad.getIdFactura());
-                ps.setInt(2, Entidad.getIdCliente());
-                ps.executeUpdate();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        PreparedStatement ps = connection.prepareStatement(sql);
+        for (int i = 0; i < values.size(); i += 2) {
+            ps.setInt(i + 1, Integer.parseInt(values.get(i)));
+            ps.setInt(i + 2, Integer.parseInt(values.get(i + 1)));
         }
 
+        ps.executeUpdate();
+        ps.close();
     }
 
     @Override
     public void vaciar() {
-        String sql = "DELETE FROM factura";
+        String sql = "DELETE FROM Factura";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
