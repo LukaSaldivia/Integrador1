@@ -13,7 +13,7 @@ public final class MySQLConnectionManager {
     // Configuración
     private static final String URL = "jdbc:mysql://localhost:3306/db_integrador_1";
     private static final String USER = "root";
-    private static final String PASSWORD = "l2s00g3!";
+    private static final String PASSWORD = "password";
 
     private MySQLConnectionManager() {
         try {
