@@ -56,6 +56,9 @@ public class MySQLDAOFactura extends MySQLEntidadDAO implements FacturaDAO {
 
     @Override
     public void agregarEnMemoria(CSVRecord record, List<Factura> arr) {
+        Integer idFactura = Integer.valueOf(record.get("idFactura"));
+        Integer idCliente = Integer.valueOf(record.get("idCliente"));
+        arr.add(new Factura(idFactura, idCliente));
 
     }
 
