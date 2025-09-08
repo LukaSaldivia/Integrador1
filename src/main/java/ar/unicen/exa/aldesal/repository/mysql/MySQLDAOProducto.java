@@ -48,7 +48,7 @@ public class MySQLDAOProducto extends MySQLEntidadDAO implements ProductoDAO {
     public void vaciar() throws SQLException {
         String query =
                 """
-                DELETE * FROM Producto        
+                DELETE * FROM Producto   
                 """;
         connection.prepareStatement(query).execute();
     }
