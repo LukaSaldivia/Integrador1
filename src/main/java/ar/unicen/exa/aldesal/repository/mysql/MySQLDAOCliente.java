@@ -2,6 +2,7 @@ package ar.unicen.exa.aldesal.repository.mysql;
 
 import ar.unicen.exa.aldesal.dao.ClienteDAO;
 import ar.unicen.exa.aldesal.entity.Cliente;
+import org.apache.commons.csv.CSVRecord;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -71,6 +72,14 @@ public class MySQLDAOCliente extends MySQLEntidadDAO implements ClienteDAO {
 
         connection.prepareStatement(query).execute();
 
+    }
+
+    @Override
+    public void agregarEnMemoria(CSVRecord record, List<Cliente> arr) {
+        Integer idCliente = Integer.valueOf(record.get("idCliente"));
+        String nombre = record.get("nombre");
+        String email = record.get("email");
+        arr.add(new Cliente(idCliente, nombre, email));
     }
 
     @Override

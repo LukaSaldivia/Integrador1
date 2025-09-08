@@ -2,6 +2,7 @@ package ar.unicen.exa.aldesal.repository.mysql;
 
 import ar.unicen.exa.aldesal.dao.FacturaDAO;
 import ar.unicen.exa.aldesal.entity.Factura;
+import org.apache.commons.csv.CSVRecord;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -50,6 +51,11 @@ public class MySQLDAOFactura extends MySQLEntidadDAO implements FacturaDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+    }
+
+    @Override
+    public void agregarEnMemoria(CSVRecord record, List<Factura> arr) {
 
     }
 

@@ -8,17 +8,15 @@ import ar.unicen.exa.aldesal.entity.Cliente;
 import ar.unicen.exa.aldesal.entity.Factura;
 import ar.unicen.exa.aldesal.factory.DAOFactory;
 import ar.unicen.exa.aldesal.factory.DBType;
-import ar.unicen.exa.aldesal.repository.mysql.MySQLDAOCliente;
-import ar.unicen.exa.aldesal.repository.mysql.MySQLDAOFactory;
+import ar.unicen.exa.aldesal.utils.CargarCSV;
 import ar.unicen.exa.aldesal.utils.VaciarRegistros;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IOException {
         DAOFactory factory = DAOFactory.getDAOFactory(DBType.mysql);
 
         ClienteDAO clienteDAO = factory.getClienteDAO();
@@ -27,6 +25,12 @@ public class Main {
         FacturaProductoDAO  facturaProductoDAO = factory.getFacturaProductoDAO();
 
         VaciarRegistros.vaciarDAOs(clienteDAO,productoDAO,facturaDAO,facturaProductoDAO);
+        CargarCSV.cargar(clienteDAO, "clientes.csv");
+        CargarCSV.cargar(productoDAO, "productos.csv");
+        CargarCSV.cargar(facturaProductoDAO, "factura-productos.csv");
+        CargarCSV.cargar(facturaDAO, "facturas.csv");
+
+
 
 
     }

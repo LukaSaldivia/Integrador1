@@ -12,9 +12,9 @@ import java.util.ArrayList;
 
 public class CargarCSV {
     public static <T> void cargar(CRUDDAO<T> c1, String filename) throws IOException, SQLException {
-        String path = "../resources/" + filename;
+        String path = "src/main/resources/" + filename;
         ArrayList<T> arr = new  ArrayList<T>();
-        CSVParser parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader(filename));
+        CSVParser parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader(path));
         for (CSVRecord record : parser) {
             c1.agregarEnMemoria(record, arr);
         }

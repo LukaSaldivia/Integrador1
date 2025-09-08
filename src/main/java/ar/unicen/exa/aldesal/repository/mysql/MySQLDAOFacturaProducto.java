@@ -2,6 +2,7 @@ package ar.unicen.exa.aldesal.repository.mysql;
 
 import ar.unicen.exa.aldesal.dao.FacturaProductoDAO;
 import ar.unicen.exa.aldesal.entity.FacturaProducto;
+import org.apache.commons.csv.CSVRecord;
 
 
 import java.sql.Connection;
@@ -73,5 +74,10 @@ public class MySQLDAOFacturaProducto extends MySQLEntidadDAO implements FacturaP
                 DELETE FROM Factura_Producto
                 """;
         connection.prepareStatement(query).execute();
+    }
+
+    @Override
+    public void agregarEnMemoria(CSVRecord record, List<FacturaProducto> arr) {
+
     }
 }

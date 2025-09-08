@@ -3,6 +3,7 @@ package ar.unicen.exa.aldesal.repository.mysql;
 
 import ar.unicen.exa.aldesal.dao.ProductoDAO;
 import ar.unicen.exa.aldesal.entity.Producto;
+import org.apache.commons.csv.CSVRecord;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -52,6 +53,11 @@ public class MySQLDAOProducto extends MySQLEntidadDAO implements ProductoDAO {
                 DELETE FROM Producto   
                 """;
         connection.prepareStatement(query).execute();
+    }
+
+    @Override
+    public void agregarEnMemoria(CSVRecord record, List<Producto> arr) {
+
     }
 
     @Override
