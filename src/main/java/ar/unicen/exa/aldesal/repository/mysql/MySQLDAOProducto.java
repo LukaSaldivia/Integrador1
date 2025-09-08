@@ -41,6 +41,7 @@ public class MySQLDAOProducto extends MySQLEntidadDAO implements ProductoDAO {
         }
         ps.executeUpdate();
         ps.close();
+
     }
 
     @Override
