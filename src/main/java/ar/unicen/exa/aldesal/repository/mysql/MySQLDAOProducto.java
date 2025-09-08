@@ -39,7 +39,7 @@ public class MySQLDAOProducto extends MySQLEntidadDAO implements ProductoDAO {
         for (int i = 0; i < values.size(); i+=3) {
             ps.setInt(i + 1, Integer.parseInt(values.get(i)));
             ps.setString(i + 2, values.get(i+1));
-            ps.setInt(i + 3, Integer.parseInt(values.get(i+2)));
+            ps.setFloat(i + 3, Float.parseFloat(values.get(i+2)));
         }
         ps.executeUpdate();
         ps.close();

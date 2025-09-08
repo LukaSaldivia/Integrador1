@@ -9,6 +9,6 @@ import java.sql.SQLException;
 
 public class VaciarRegistros {
     public static void vaciarDAOs(ClienteDAO d1, ProductoDAO d2, FacturaDAO d3, FacturaProductoDAO d4) throws SQLException {
-        d1.vaciar();d2.vaciar();d3.vaciar();d4.vaciar();
+        d4.vaciar();d1.vaciar();d2.vaciar();d3.vaciar();
     }
 }

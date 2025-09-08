@@ -5,7 +5,7 @@ import ar.unicen.exa.aldesal.dao.FacturaDAO;
 import ar.unicen.exa.aldesal.dao.FacturaProductoDAO;
 import ar.unicen.exa.aldesal.dao.ProductoDAO;
 import ar.unicen.exa.aldesal.entity.Cliente;
-import ar.unicen.exa.aldesal.entity.Factura;
+import ar.unicen.exa.aldesal.entity.Producto;
 import ar.unicen.exa.aldesal.factory.DAOFactory;
 import ar.unicen.exa.aldesal.factory.DBType;
 import ar.unicen.exa.aldesal.utils.CargarCSV;
@@ -27,8 +27,18 @@ public class Main {
         VaciarRegistros.vaciarDAOs(clienteDAO,productoDAO,facturaDAO,facturaProductoDAO);
         CargarCSV.cargar(clienteDAO, "clientes.csv");
         CargarCSV.cargar(productoDAO, "productos.csv");
-        CargarCSV.cargar(facturaProductoDAO, "factura-productos.csv");
         CargarCSV.cargar(facturaDAO, "facturas.csv");
+        CargarCSV.cargar(facturaProductoDAO, "facturas-productos.csv");
+
+        ArrayList<Cliente> clientes = new ArrayList<>(clienteDAO.getClientesMasFacturado());
+
+        for (Cliente cliente : clientes) {
+            System.out.println(cliente.getNombre() + " " + cliente.getEmail());
+        }
+
+        Producto recaudado = productoDAO.getMasRecaudado();
+        System.out.println();
+        System.out.println(recaudado.getNombre());
 
 
 

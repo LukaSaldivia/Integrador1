@@ -27,8 +27,8 @@ public class MySQLDAOFacturaProducto extends MySQLEntidadDAO implements FacturaP
                     idProducto INT NOT NULL,
                     cantidad INT NOT NULL,
                     PRIMARY KEY (idFactura, idProducto),
-                    FOREIGN KEY (idFactura) REFERENCES Factura(idFactura),
-                    FOREIGN KEY (idProducto) REFERENCES Producto(idProducto)
+                    FOREIGN KEY (idFactura) REFERENCES Factura(idFactura) ON DELETE CASCADE,
+                    FOREIGN KEY (idProducto) REFERENCES Producto(idProducto) ON  DELETE CASCADE
                 );
                 """;
     }
