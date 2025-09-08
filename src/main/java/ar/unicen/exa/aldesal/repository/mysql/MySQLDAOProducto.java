@@ -6,6 +6,7 @@ import ar.unicen.exa.aldesal.entity.Producto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,4 +64,26 @@ public class MySQLDAOProducto extends MySQLEntidadDAO implements ProductoDAO {
                 valor FLOAT NOT NULL,
                 """;
     }
+
+    public Producto getMasRecaudado(int idProducto) throws SQLException {
+        String query =
+                """
+                SELECT p.idProducto, p.nombre, SUM(fp.cantidad * p.valor) AS recaudacion
+                        FROM Factura_Producto fp
+                        JOIN Producto p ON fp.idProducto = p.idProducto
+                        GROUP BY p.idProducto, p.nombre
+                        ORDER BY recaudacion DESC
+                        LIMIT 1
+       
+        """;
+
+        ResultSet rs = connection.prepareStatement(query).executeQuery();
+        Producto p = null;
+        if (rs.next()) {
+            p = new Producto(rs.getInt("idProducto"), rs.getString("nombre"), rs.getFloat("recaudacion"));
+        }
+        return p;
+    }
+
+
 }
