@@ -4,4 +4,4 @@
 
 <h2>Integrador3</h2>
 
-[Integrador2](https://github.com/juann0278/Integrador3)
+[Integrador3](https://github.com/juann0278/Integrador3)
