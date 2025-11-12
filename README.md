@@ -5,3 +5,7 @@
 <h2>Integrador3</h2>
 
 [Integrador3](https://github.com/juann0278/Integrador3)
+
+<h2>Integrador4</h2>
+
+[Integrador4](https://github.com/juann0278/Integrador4)
